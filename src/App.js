@@ -40,10 +40,10 @@ function App() {
  
   return (
     <>
-      <div className="text-white h-screen pt-[30px] ">
-        <div className="m-auto z max-h-[95vh] w-[30%] overflow-hidden rounded-xl relative">
+      <div className="text-white p-1 h-screen pt-[30px] ">
+        <div className="m-auto h-[90vh] w-[400px] lg:w-[30%] overflow-hidden rounded-xl relative">
           <div className="flex relative ">
-          <img className="w-full h-full" src={slide[curr]}  alt=" "/>
+          <img className="w-full h-[90vh]" src={slide[curr]}  alt=" "/>
           {/* {slide.map((slides,index)=>(
              <img className="w-full h-full" src={slide[curr]}  alt=" "/>
           ))} */}
