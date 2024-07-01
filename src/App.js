@@ -44,9 +44,6 @@ function App() {
         <div className="m-auto h-[90vh] w-[400px] lg:w-[30%] overflow-hidden rounded-xl relative">
           <div className="flex relative ">
           <img className="w-full h-[90vh]" src={slide[curr]}  alt=" "/>
-          {/* {slide.map((slides,index)=>(
-             <img className="w-full h-full" src={slide[curr]}  alt=" "/>
-          ))} */}
           </div>
           <div className=" flex absolute inset-0 justify-between">
             <button onClick={prev} className="ml-5  "><span className=" glass text-[30px] px-[25px] py-[20px]">&#x276E;</span></button>
@@ -54,7 +51,7 @@ function App() {
           </div>
          
         </div>
-        <div className="flex z t-1 py-4 justify-center">
+        <div className="flex t-1 py-4 justify-center">
           {slide.map((_,index)=>(
             <div key={index} onClick={()=>gotoslide(index)} className="">
               <RxDotFilled className={(index==curr)? `bg-red-400 rounded-full `:null}/>
