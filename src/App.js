@@ -1,24 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState ,useEffect} from "react";
+import "./App.css";
+import sunjinwoo from "./assest/image/sungjinwoo.jpg";
+import sunjinwoodagger from "./assest/image/sungjinwoodagger.jpg";
+import naruto from "./assest/image/naruto.jpg";
+import sungjin from "./assest/image/sungjin.jpg";
+import igrissung from "./assest/image/igrissung.jpg";
+import igris from "./assest/image/igris.jpg";
+import sungjinlig from "./assest/image/sungjinwoolig.jpg";
+import {RxDotFilled} from 'react-icons/rx';
 
-function App() {
+
+
+function App() { 
+  const slide = [
+    sungjin,
+    sunjinwoo,
+    naruto,
+    sunjinwoodagger,
+    sungjinlig,
+    igrissung,
+    igris,
+  ];
+  const [curr, setcurr]=useState(0)
+
+  const next=()=>{
+    setcurr( (curr === slide.length - 1 ? 0 : curr + 1 ))
+  }
+  const prev=()=>{
+    setcurr((curr === 0 ? slide.length - 1 : curr - 1 ))
+  }
+  useEffect(() => {
+    const id=setInterval(() => next(),5000); 
+    return () => clearInterval(id);
+  });
+
+  const gotoslide = (index)=>{
+    setcurr(index)
+  }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="text-white h-screen pt-[30px] ">
+        <div className="m-auto z max-h-[95vh] w-[30%] overflow-hidden rounded-xl relative">
+          <div className="flex relative ">
+          <img className="w-full h-full" src={slide[curr]}  alt=" "/>
+          {/* {slide.map((slides,index)=>(
+             <img className="w-full h-full" src={slide[curr]}  alt=" "/>
+          ))} */}
+          </div>
+          <div className=" flex absolute inset-0 justify-between">
+            <button onClick={prev} className="ml-5  "><span className=" glass text-[30px] px-[25px] py-[20px]">&#x276E;</span></button>
+            <button onClick={next} className="mr-5"><span className=" glass text-[30px] px-[25px] py-[20px]">&#x276F;</span></button>
+          </div>
+         
+        </div>
+        <div className="flex z t-1 py-4 justify-center">
+          {slide.map((_,index)=>(
+            <div key={index} onClick={()=>gotoslide(index)} className="">
+              <RxDotFilled className={(index==curr)? `bg-red-400 rounded-full `:null}/>
+              </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
