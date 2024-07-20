@@ -54,7 +54,7 @@ function App() {
         <div className="flex t-1 py-4 justify-center">
           {slide.map((_,index)=>(
             <div key={index} onClick={()=>gotoslide(index)} className="">
-              <RxDotFilled className={(index==curr)? `bg-red-400 rounded-full `:null}/>
+              <RxDotFilled className={(index===curr)? `bg-red-400 rounded-full `:null}/>
               </div>
           ))}
         </div>
